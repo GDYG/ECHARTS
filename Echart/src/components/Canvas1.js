@@ -9,7 +9,6 @@ class Canvas1 extends Component {
     render() {
         return (
             <div>
-                333
                 <Link to='/canvas'>canvas</Link>
             </div>
         );
