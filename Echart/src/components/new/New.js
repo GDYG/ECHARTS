@@ -20,7 +20,6 @@ class New extends Component {
             // // ctx.bezierCurveTo(50, 15, 40, 70, 10, 10) //三次贝塞尔曲线
             // ctx.stroke();
 
-
             // 二次贝塞尔曲线
             // ctx.beginPath();
             // ctx.moveTo(75,25);
@@ -61,11 +60,87 @@ class New extends Component {
             //     ctx.fillRect(10,10,130,130);
             //     ctx.strokeRect(50,50,50,50);
 
-            var ctx = document.getElementById('canvas').getContext('2d'); 
-            ctx.beginPath(); 
-            ctx.arc(50, 50, 30, 0, Math.PI*2, true);
-            ctx.arc(50, 50, 15, 0, Math.PI*2, true);
-            ctx.fill("evenodd");
+            // var ctx = document.getElementById('canvas').getContext('2d'); 
+            // ctx.beginPath(); 
+            // ctx.arc(50, 50, 30, 0, Math.PI*2, true);
+            // ctx.arc(50, 50, 15, 0, Math.PI*2, true);
+            // ctx.fill("evenodd");
+
+            //动画
+            // var sun = new Image();
+            // var moon = new Image();
+            // var earth = new Image();
+            // function init(){
+            //     sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+            //     moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+                // earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+            //     window.requestAnimationFrame(draw);
+            // }
+
+            //     ctx.globalCompositeOperation = 'destination-over';
+            //     ctx.clearRect(0,0,300,300); // clear canvas
+
+            //     ctx.fillStyle = 'rgba(0,0,0,0.4)';
+            //     ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+            //     ctx.save();
+            //     ctx.translate(150,150);
+
+            //     // Earth
+            //     var time = new Date();
+            //     ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+            //     ctx.translate(105,0);
+            //     ctx.fillRect(0,-12,50,24); // Shadow
+            //     ctx.drawImage(earth,-12,-12);
+
+            //     // Moon
+            //     ctx.save();
+            //     ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+            //     ctx.translate(0,28.5);
+            //     ctx.drawImage(moon,-3.5,-3.5);
+            //     ctx.restore();
+
+            //     ctx.restore();
+                
+            //     ctx.beginPath();
+            //     ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+            //     ctx.stroke();
+                
+            //     ctx.drawImage(sun,0,0,300,300);
+
+            //     window.requestAnimationFrame(draw);
+            // init();
+
+            //笑脸
+            // ctx.beginPath()
+            // ctx.arc(150, 150, 80, 0, Math.PI*2, true)
+            // ctx.moveTo(200, 150)
+            // ctx.arc(150, 150, 50, 0, Math.PI, false)
+            // ctx.moveTo(130, 120)
+            // ctx.arc(120, 120, 10, 0, Math.PI*2, true)
+            // ctx.moveTo(190, 120)
+            // ctx.arc(180, 120, 10, 0, Math.PI*2, true)
+            // ctx.stroke()
+
+            //涂鸦
+            canvas.onmousedown = function(e) {
+                var e = e | window.event;
+                var x = e.clientX - canvas.offsetLeft
+                var y = e.clientY - canvas.offsetTop
+                ctx.beginPath()
+                // ctx.font = '10px'
+                ctx.lineWidth = '5'
+                ctx.strokeStyle = 'rgb(100, 200, 100)'
+                ctx.moveTo(x, y)
+                canvas.onmousemove = function(e) {
+                    var a = e.clientX - canvas.offsetLeft
+                    var b = e.clientY - canvas.offsetTop 
+                    ctx.lineTo(a, b)
+                    ctx.stroke()
+                }
+            }
+            window.onmouseup = function() {
+                canvas.onmousemove = null
+            }
         }
     }
 

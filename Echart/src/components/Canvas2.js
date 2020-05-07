@@ -7,7 +7,6 @@ class Canvas2 extends Component {
         this.state = {  };
     }
     render() {
-        console.log(this.props)
         return (
             <div>
                 <Link to='/canvas/new2'>GO ON</Link>
